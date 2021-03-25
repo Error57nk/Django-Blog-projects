@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% block metaData %} {% endblock %} {% block styleData %} {% endblock %}
+  <!-- <link rel="shortcut icon" href="{% static 'blog/images/favicon.ico' %}" type="image/x-icon"> -->
+  <link rel="shortcut icon" href="{% static 'blog/images/favicon.png' %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'portfolio/css/fontawesome.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'blog/css/main.css' %}" />
+
+  <title>{% block tabName %} {% endblock %} | TechNick</title>
+</head>
+
+<body>
+  {% include 'blog/header.html' %}
+
+  <section>
+    {% block banner %}{% endblock %}
+    <div class="ncontainer-fluid">
+      <div class="blog-layout">
+        <div class="blog-layout__mainSec">
+          <div class="src-box nhd" id="raw-src">
+            <form action="{% url 'result' %}" method="get">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search" name="srckey" />
+                <button type="submit" class="src-icon-btn">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+          {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+              {% endfor %}
+          </ul>
+          {% endif %}
+          {% block maincon %}{% endblock %}
+          <!-- <?php include "./mainSec.php" ?> -->
+        </div>
+
+        <!-- SideBar -->
+        <div class="blog-layout__sideSec">
+          {% block side-admin %} {% endblock %}
+
+          <div class="src-box" id="srcBox">
+            <h4>Search</h4>
+            <form action="{% url 'result' %}" method="get">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search" name="srckey" />
+                <button type="submit" class="src-icon-btn">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+          {% block sidebar %}{% endblock %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include 'blog/footer.html' %} {% block javaScriptCode %} {% endblock %}
+</body>
+
+</html>

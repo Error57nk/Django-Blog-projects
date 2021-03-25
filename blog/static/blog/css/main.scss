@@ -1,0 +1,33 @@
+// @import "node_modules/bootstrap/scss/bootstrap";
+
+// Required
+// @import "node_modules/bootstrap/scss/mixins";
+// @import "node_modules/bootstrap/scss/functions";
+// @import "node_modules/bootstrap/scss/variables";
+
+// Optional
+// @import "node_modules/bootstrap/scss/reboot";
+// @import "node_modules/bootstrap/scss/type";
+// @import "node_modules/bootstrap/scss/buttons";
+// @import "node_modules/bootstrap/scss/forms";
+// @import "node_modules/bootstrap/scss/images";
+
+@import "variables/color";
+@import "base/setupBootstrap";
+@import "base/base";
+@import "base/shortcuts";
+@import "base/animation";
+@import "mixin/mixin";
+@import "mixin/function";
+@import "components/components";
+@import "components/buttons";
+@import "components/form";
+@import "layout/layout";
+@import "layout/header";
+@import "layout/footer";
+@import "layout/sidebar";
+@import "pages/page";
+@import "pages/viewBlog";
+@import "pages/uploadBlog";
+@import "pages/resultPage";
+@import "pages/profile";

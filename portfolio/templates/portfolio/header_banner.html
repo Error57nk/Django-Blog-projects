@@ -1,0 +1,20 @@
+{% load static %}
+<div class="head-banner">
+  <img src="{{bio.bannerImgURL}}" alt="Nitesh Kumar" />
+  <div class="head-banner__lead">
+    <h2>{{bio.name}}</h2>
+    <h5>{{bio.tagLine}}</h5>
+    <p>{{bio.biobanner}}</p>
+    <div class="d-grid eff-1">
+      <a
+        href="{% url 'resume' %}"
+        class="nbtn nbtn__orange nmr-5 n-center"
+        target="_blank"
+        ><i class="fas fa-id-badge"></i> View Resume</a
+      >
+      <a href="{% url 'contact' %}" class="nbtn nbtn__light nml-5 n-center"
+        ><i class="fas fa-paper-plane"></i> Contact Me</a
+      >
+    </div>
+  </div>
+</div>

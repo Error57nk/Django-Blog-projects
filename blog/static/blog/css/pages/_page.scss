@@ -1,0 +1,74 @@
+.header-banner {
+  position: relative;
+  &__info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include breakpt(phone) {
+      position: relative;
+      top: unset;
+      left: unset;
+      transform: unset;
+      padding: 0 37px;
+      margin-top: -50px;
+    }
+    &_img {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        height: 150px;
+        border-radius: 50%;
+        background: $grad-1;
+        padding: 3px;
+        @include breakpt(laptopNless) {
+          height: 90px;
+        }
+      }
+    }
+    &_des {
+      flex: 3;
+      color: #fff;
+      text-align: center;
+      @include breakpt(phone) {
+        color: unset;
+      }
+      h4 {
+        margin-top: 10px;
+        @include breakpt(laptopNless) {
+          font-size: 18px;
+        }
+      }
+      p {
+        color: inherit;
+        @include breakpt(laptopNless) {
+          font-size: 14px;
+          margin-bottom: 6px;
+        }
+      }
+      .social-v {
+        margin: 0 auto;
+        max-width: 70%;
+
+        li {
+          font-size: 16px;
+          line-height: 16px;
+          background: $grad-1;
+          @include breakpt(laptopNless) {
+            font-size: 14px;
+            line-height: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+.admin-sec {
+  padding: 20px 10px;
+  background-color: rgba($primary-orange, 0.7);
+  border-radius: 10px;
+  box-shadow: $shad-1;
+}

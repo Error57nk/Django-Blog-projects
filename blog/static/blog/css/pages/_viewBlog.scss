@@ -1,0 +1,196 @@
+.pv-hsec {
+  background-color: $foot-bg;
+  position: relative;
+  display: flex;
+  border: 2px solid $primary-orange;
+  &__thumb {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media screen and (max-width: 582px) {
+      display: none;
+    }
+  }
+  &__info {
+    flex: 2;
+    margin-top: 30px;
+    padding-left: 15px;
+    @media screen and (max-width: 582px) {
+      margin-top: 40px;
+      flex: 1;
+      text-align: center;
+    }
+    h2 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 14px;
+      font-style: italic;
+      span {
+        white-space: nowrap;
+      }
+    }
+    .pv-social {
+      .sul {
+        display: flex;
+        padding-left: 0;
+        @media screen and (max-width: 582px) {
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+  &__bread {
+    position: absolute;
+    background-color: $primary-orange;
+    top: -10px;
+    left: 20px;
+    @media screen and (max-width: 582px) {
+      top: 0px;
+      left: 0px;
+      right: 0;
+      p {
+        span {
+          white-space: nowrap;
+        }
+      }
+    }
+    p {
+      margin-bottom: 0;
+      font-size: 13px;
+      padding: 0 7px;
+      white-space: nowrap;
+      overflow: hidden;
+      span {
+        cursor: default;
+      }
+    }
+  }
+}
+@mixin blog-head {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.bcon {
+  padding: 20px 0;
+
+  &__con {
+    // text-align: justify;
+    padding: 10px 20px;
+    font-size: 15px;
+    margin-bottom: 0px;
+    overflow: auto;
+    @media screen and (max-width: 950px) {
+      padding: 0px 10px;
+    }
+  }
+  &__subh {
+    &1 {
+      @include blog-head;
+      font-size: 24px;
+      color: $primary-orange1;
+    }
+    &2 {
+      @include blog-head;
+      font-size: 22px;
+      color: $primary-orange1;
+    }
+    &3 {
+      @include blog-head;
+      font-size: 20px;
+      color: $primary-orange1;
+    }
+    &4 {
+      @include blog-head;
+      font-size: 18px;
+      color: $primary-orange1;
+    }
+    @media screen and (max-width: 450px) {
+      &1 {
+        font-size: 18px;
+      }
+      &2 {
+        font-size: 17px;
+      }
+      &3 {
+        font-size: 16px;
+      }
+      &4 {
+        font-size: 15px;
+      }
+    }
+  }
+  &__ul {
+    &_star {
+      li::before {
+        content: "\2605"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+        color: $primary-orange1; /* Change the color */
+        font-weight: bold; /* If you want it to be bold */
+        font-size: 16px;
+        display: inline-block; /* Needed to add space between the bullet and the text */
+        width: 1em; /* Also needed for space (tweak if needed) */
+        margin-left: -1em; /* Also needed for space (tweak if needed) */
+      }
+    }
+    &_check {
+      li::before {
+        content: "\2713"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+        color: $primary-orange1; /* Change the color */
+        font-weight: bold; /* If you want it to be bold */
+        font-size: 16px;
+        display: inline-block; /* Needed to add space between the bullet and the text */
+        width: 1em; /* Also needed for space (tweak if needed) */
+        margin-left: -1em; /* Also needed for space (tweak if needed) */
+      }
+    }
+    &_dot {
+      li::before {
+        content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+        color: $primary-orange1; /* Change the color */
+        font-weight: bold; /* If you want it to be bold */
+        font-size: 16px;
+        display: inline-block; /* Needed to add space between the bullet and the text */
+        width: 1em; /* Also needed for space (tweak if needed) */
+        margin-left: -1em; /* Also needed for space (tweak if needed) */
+      }
+    }
+  }
+  &__img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__tag {
+    margin-top: 40px;
+    padding: 10px 10px;
+    border: 2px dashed #ccc;
+    .tagList {
+      display: inline-block;
+      white-space: nowrap;
+      padding: 3px 7px;
+      margin-right: 3px;
+      margin-bottom: 3px;
+    }
+  }
+
+  pre {
+    overflow: auto;
+    max-height: 360px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 20px 10px;
+    background-color: black;
+    color: green;
+    white-space: pre-line !important;
+    @media screen and (max-width: 450px) {
+      font-size: 12px;
+      padding: 10px 10px;
+    }
+  }
+}
+.bplink {
+  text-decoration: underline !important;
+}

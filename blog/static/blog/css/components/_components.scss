@@ -1,0 +1,78 @@
+.social-v {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 0;
+  li {
+    font-size: 20px;
+    line-height: 20px;
+    background-color: $primary-orange1;
+    color: $color-white;
+    padding: 7px;
+    border-radius: 50%;
+    &:hover {
+      background-color: $primary-orange0;
+    }
+  }
+}
+.srcTag {
+  margin-bottom: 0;
+  font-size: 10px;
+  line-height: 14px;
+}
+.tagList {
+  padding: 0 9px;
+  background-color: rgba($primary-orange0, 0.6);
+  color: rgb(255, 255, 255);
+  font-size: 10px;
+  white-space: nowrap;
+  line-height: 12px;
+}
+.nbadge-1 {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 12px;
+  padding: 0px 7px;
+  background-color: rgba(127, 255, 212, 0.651);
+  pointer-events: none;
+  @include breakpt(phone) {
+    font-size: 10px;
+  }
+}
+.nbadge-2 {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 12px;
+  padding: 0px 7px;
+  background-color: rgba(255, 127, 227, 0.651);
+  pointer-events: none;
+}
+.nbt-3 {
+  border-top: 3px solid $primary-orange1;
+}
+.nbt-5 {
+  border-top: 5px solid $primary-orange1;
+}
+.nbt-6 {
+  border-top: 6px solid $primary-orange0;
+}
+.nbt-8 {
+  border-top: 8px solid $primary-orange1;
+}
+.nbt-10 {
+  border-top: 10px solid $primary-orange1;
+}
+.nbt-12 {
+  border-top: 12px solid $primary-orange1;
+}
+.nhr-1 {
+  border: 1px solid rgba($primary-orange1, 0.6);
+}
+.nhr-2 {
+  border: 1px solid rgba($primary-orange1, 0.6);
+}
+.nhr-3 {
+  border: 1px solid rgba($primary-orange1, 0.6);
+}

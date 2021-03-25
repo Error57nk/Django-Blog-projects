@@ -1,0 +1,105 @@
+.head {
+  position: relative;
+  padding: 0 10px;
+  background: $grad-1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 999;
+  @media screen and (max-width: 410px) {
+    justify-content: space-between;
+  }
+  &__logo {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    left: 10px;
+    background-color: azure;
+    box-shadow: $shad-logo;
+    @media screen and (max-width: 410px) {
+      position: unset;
+      background-color: transparent;
+      box-shadow: unset;
+    }
+    img {
+      height: 50px;
+      @media screen and (max-width: 410px) {
+        height: 36px;
+      }
+    }
+    h2 {
+      line-height: 50px;
+      padding: 0 10px;
+      margin-bottom: 0;
+      color: #666;
+      letter-spacing: 5px;
+
+      @media screen and (max-width: 410px) {
+        display: flex;
+        flex-direction: column;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 18px;
+        color: #fff;
+      }
+    }
+  }
+  &__links {
+    @media screen and (max-width: 410px) {
+      justify-content: center;
+    }
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+      padding-left: 0px;
+      li {
+        padding: 7px;
+        a {
+          img {
+            height: 25px;
+          }
+        }
+      }
+      .nusernk {
+        position: relative;
+        &:hover {
+          background-color: #fff;
+        }
+        &:hover .nusernk__list {
+          display: flex;
+          flex-direction: column;
+          background-color: rgba($primary-orange1, 0.7);
+        }
+        &__btn {
+          background-color: transparent;
+          border: none;
+          outline: none;
+        }
+        &__list {
+          display: none;
+          padding-left: 0;
+          position: absolute;
+          top: 39px;
+          right: 0px;
+
+          li {
+            border-bottom: 1px solid #ccc;
+            width: 100%;
+            a {
+              width: 100%;
+              white-space: nowrap;
+              color: #fff;
+              padding: 5px 20px;
+              font-size: 14px;
+              &:hover {
+                color: $primary-orange;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

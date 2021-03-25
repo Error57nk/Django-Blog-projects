@@ -1,0 +1,47 @@
+.res-head {
+  margin-bottom: 40px;
+  margin-top: 40px;
+  // @media screen and (max-width: 950px) {
+  //   grid-template-columns: 1fr;
+  // }
+}
+
+.res-box {
+  &__item {
+    position: relative;
+    background-color: #ececec;
+    margin-bottom: 20px;
+    padding: 10px;
+    display: flex;
+    box-shadow: $shad-1;
+    @include breakpt(phone) {
+      flex-direction: column;
+    }
+
+    &:hover &_img img {
+      scale: 1.1;
+    }
+    &:hover &_info .b-head {
+      color: $primary-orange1;
+    }
+    &_img {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      margin-right: 20px;
+      @include breakpt(phone) {
+        margin-right: 0px;
+        margin-bottom: 20px;
+      }
+    }
+    &_info {
+      flex: 2;
+      p {
+        font-size: 15px;
+        text-align: justify;
+      }
+    }
+  }
+}

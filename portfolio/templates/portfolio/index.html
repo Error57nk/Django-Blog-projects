@@ -1,0 +1,140 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block metaData %} {% endblock %}
+{% block tabName %} Home | {% endblock %}
+
+{% block body_con %}
+
+
+<div class="main-containt__area">
+
+  <section class="sec-v1-0">
+    <div class="sec-body">
+      <h2 class="head-v1">What I do</h2>
+      <p class="np-10 bio-text"> {{bio.bioindex}}</p>
+      <p class="np-10">Below is a quick overview of my technical skill sets and technologies I use, also check my
+        <a href="">Online Resume</a> and <a href="">project portfolio.</a></p>
+
+
+
+      <div class="skill">
+        {% for i in skill %}
+        <div class="skill__item">
+          <p><i class="{{i.logo_class}}"></i> {{i.tittle}}</p>
+        </div>
+        {% endfor %}
+
+
+
+      </div>
+    </div>
+
+
+  </section>
+
+
+
+
+  <!-- Projects -->
+  <section class="featured_projects sec-v1-1">
+    <div class="sec-body">
+      <h2 class="head-v2">Featured projects</h2>
+      <div class="box_2">
+        {% for p in pro %}
+        <div class="box_2__item">
+          <div class="box_2__item__image">
+            <img loading="lazy" src="{{p.fetureImgURL}}" class="img-fluid" alt="Project_pic">
+          </div>
+          <div class="box_2__item__lead">
+            <p class="sub-head-v1">{{p.title}}</p>
+            <p>{{p.des|slice:"100"}}...</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="center-center nmt-20">
+        <a href="projects.html" class="btn-small__v2">View More</a>
+      </div>
+    </div>
+  </section>
+  <!-- Section project End: -->
+
+  <!-- Section Blog -->
+
+  <section class="sec-v1-0">
+    <div class="sec-body">
+      <h2 class="head-v1">Latest Blog Posts </h2>
+      <div class="box box__r3 blog">
+
+        <div class="blog__items">
+          <img loading="lazy" src="http://www.technick.frontroot.co/mediaend/thumb/5f7ae11b67e5b0.68462991.jpg" alt=""
+            class="img-fluid">
+          <span class="blog-date"> &#9899; 5 sep 2020</span>
+          <p class="sub-head-v1">DIY Motor Driver</p>
+          <div class="blog__items__lead">
+            <p>While working with Arduino or with other microcontrollers you may find it difficult ...</p>
+            <a href="http://www.technick.frontroot.co/front-page.php?postname=make-you-own-motor-driver21&cat=tech-Nick"
+              target="_blank">Read more &rarr;</a>
+          </div>
+        </div>
+        <div class="blog__items">
+          <img loading="lazy" src="http://www.technick.frontroot.co/mediaend/thumb/5fa58ad823c448.32177400.jpg" alt=""
+            class="img-fluid">
+          <span class="blog-date"> &#9899; 5 sep 2020</span>
+          <p class="sub-head-v1">obstacle avoider Bot</p>
+          <div class="blog__items__lead">
+            <p>I have work and made different types of robot with the help of microcontroller (Arduino) .... </p>
+            <a href="http://www.technick.frontroot.co/front-page.php?postname=avoiding-robot-without-microcontroller82&cat=tech-Nick"
+              target="_blank">Read more &rarr;</a>
+          </div>
+        </div>
+        <div class="blog__items">
+          <img loading="lazy" src="http://www.technick.frontroot.co/mediaend/thumb/5f464b37a50345.40577152.jpg" alt=""
+            class="img-fluid">
+          <span class="blog-date"> &#9899; 5 sep 2020</span>
+          <p class="sub-head-v1">PugG Tricks</p>
+          <div class="blog__items__lead">
+            <p>Konnichiwa guys...ViktorDornan here, have you been playing PUBG MOBILE for a lon... </p>
+            <a href="http://www.technick.frontroot.co/front-page.php?postname=tricks-to-grab-that-chicken-dinner98&cat=games"
+              target="_blank">Read more &rarr;</a>
+
+          </div>
+        </div>
+
+
+      </div>
+      <div class="center-center nmt-20">
+
+        <a href="http://www.technick.frontroot.co" target="_blank" class="btn-small__v1">View More</a>
+      </div>
+      <div class="sec-body">
+  </section>
+  <!-- END: Section Blog -->
+
+  <!-- Gallery -->
+  <section class="featured_projects sec-v1-1">
+    <div class="sec-body">
+      <h2 class="head-v2">project Gallery</h2>
+      <div class="gallery-container">
+
+        {% for g in pro %}
+        <div class="g-box">
+          <img loading="lazy" class="img-fluid" src="{{g.fetureImgURL}}" alt="{{g.tittle}}">
+        </div>
+        {% endfor %}
+
+
+
+
+
+      </div>
+    </div>
+
+  </section>
+
+
+</div>
+
+
+
+{% endblock %}

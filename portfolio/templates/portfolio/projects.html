@@ -1,0 +1,400 @@
+{% extends 'portfolio/base.html' %} {% load static %} {% block metaData %}
+{%endblock%} {% block tabName %} Projects | {% endblock %} {% block body_con %}
+
+<div class="main-containt__area">
+  <!-- Main Sec -->
+  <section class="sec-v1-0 sec-web" id="websec">
+    <div class="sec-body">
+      <div class="tab-head nmb-30">
+        <div class="tab eff-1">
+          <button class="tablinks cweb" onclick="nscrool('websec')">
+            Web Projects
+          </button>
+          <button class="tablinks capp" onclick="nscrool('app-sec')">
+            Android Apps
+          </button>
+          <button class="tablinks chard" onclick="nscrool('hard-sec')">
+            hardware Projects
+          </button>
+          <button class="tablinks ciot" onclick="nscrool('iot-sec')">
+            iot based Projects
+          </button>
+        </div>
+      </div>
+      <h2 class="p-head cweb">Website development ({{pCount.pwCount}})</h2>
+
+      <div class="pp-mainbox-v1 webBoxParent">
+        {% if proweb %} {% for wp in proweb %}
+        <div class="pp-box webBoxItem">
+          <div class="pp-box__txt">
+            <div class="pp-box__txt__head">
+              <h2>{{wp.title}}</h2>
+            </div>
+            <div class="pp-box__txt__lead">
+              <p>{{wp.des}}</p>
+              <h5>Technology used</h5>
+              <div class="n-list-item nmb-20">
+                {% for tc in wp.techusedList %}
+                <span>{{tc}}</span>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="pp-box__txt__btn">
+              <a href="javascript:void(0)" class="nbtn-full"
+                >{{wp.proStatus}}</a
+              >
+              <a href="{{wp.proGithub}}" class="nbtn-full">Github</a>
+              <a href="{{wp.proLink}}" class="nbtn-full">Visit Website</a>
+            </div>
+          </div>
+          <div class="pp-box__pic">
+            <img
+              loading="lazy"
+              src="{{wp.projectImgURL}}"
+              alt="{{wp.title}}"
+              class="pp-box__pic__1 img-fluid"
+            />
+          </div>
+        </div>
+        {% endfor %} {% else %}
+        <h2>Project Not Available</h2>
+        {% endif %}
+      </div>
+
+      <!-- extra -->
+      {% if proweb and pCount.pwCount > 2 %}
+      <div class="nf-cenetr">
+        <button
+          class="nbtn-c cweb"
+          id="webbtn"
+          onclick="getDataPro('web','{{pCount.pwCount}}','.webBoxItem','.webBoxParent','#webbtn')"
+        >
+          View More <i class="fas fa-binoculars"></i>
+        </button>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- Android -->
+  <section class="sec-v1-1 sec-app" id="app-sec">
+    <div class="sec-body">
+      <h2 class="p-head capp">Android Projects ({{pCount.paCount}})</h2>
+      <div class="pp-mainbox-v2 appBoxParent">
+        {% if proapp %} {% for ap in proapp %}
+        <div class="pp-box appBoxItem">
+          <div class="pp-box__txt">
+            <div class="pp-box__txt__head">
+              <h2>{{ap.title}}</h2>
+            </div>
+            <div class="pp-box__txt__lead">
+              <p>{{ap.des}}</p>
+              <h5>Technology used</h5>
+              <div class="n-list-item nmb-20">
+                {% for tc in ap.techusedList %}
+                <span>{{tc}}</span>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="pp-box__txt__btn">
+              <a href="javascript:void(0)" class="nbtn-full"
+                >{{ap.proStatus}}</a
+              >
+              <a href="{{ap.proGithub}}" class="nbtn-full">Github</a>
+              <a href="{{ap.proDownload}}" class="nbtn-full">Download app</a>
+            </div>
+          </div>
+          <div class="pp-box__pic">
+            <img
+              loading="lazy"
+              src="{{ap.projectImgURL}}"
+              alt="{{ap.title}}"
+              class="pp-box__pic__1 img-fluid"
+            />
+          </div>
+        </div>
+        {% endfor %} {% else %}
+        <h2>Project Not Available</h2>
+        {% endif %}
+      </div>
+      <!-- extra -->
+      {% if proapp and pCount.paCount > 2 %}
+      <div class="nf-cenetr">
+        <button
+          class="nbtn-c capp"
+          id="appbtn"
+          onclick="getDataPro('app','{{pCount.paCount}}','.appBoxItem','.appBoxParent','#appbtn')"
+        >
+          View More <i class="fas fa-binoculars"></i>
+        </button>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- hardware -->
+  <section class="sec-v1-0 sec-hard" id="hard-sec">
+    <div class="sec-body">
+      <h2 class="p-head chard">HArdware Projects ({{pCount.phCount}})</h2>
+      <div class="pp-mainbox-v2 hardBoxParent">
+        {% if prohard %} {% for hd in prohard %}
+        <div class="pp-box hardBoxItem">
+          <div class="pp-box__txt">
+            <div class="pp-box__txt__head">
+              <h2>{{hd.title}}</h2>
+            </div>
+            <div class="pp-box__txt__lead">
+              <p>{{hd.des}}</p>
+              <h5>Technology used</h5>
+              <div class="n-list-item nmb-20">
+                {% for tc in hd.techusedList %}
+                <span>{{tc}}</span>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="pp-box__txt__btn">
+              <a href="javascript:void(0)" class="nbtn-full"
+                >{{hd.proStatus}}</a
+              >
+              <a href="{{hd.proGithub}}" class="nbtn-full">Github</a>
+              <a href="{{hd.proLink}}" class="nbtn-full">View Project</a>
+            </div>
+          </div>
+          <div class="pp-box__pic">
+            <img
+              loading="lazy"
+              src="{{hd.projectImgURL}}"
+              alt="{{hd.title}}"
+              class="pp-box__pic__1 img-fluid"
+            />
+          </div>
+        </div>
+        {% endfor %} {% else %}
+        <h2>Project Not Available</h2>
+        {% endif %}
+      </div>
+
+      <!-- extra -->
+      {% if prohard and pCount.phCount > 2 %}
+
+      <div class="nf-cenetr">
+        <button
+          class="nbtn-c chard"
+          id="hardbtn"
+          onclick="getDataPro('hard','{{pCount.phCount}}','.hardBoxItem','.hardBoxParent','#hardbtn')"
+        >
+          View More <i class="fas fa-binoculars"></i>
+        </button>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+  <!-- End hardware -->
+
+  <!-- IOT -->
+  <section class="sec-v1-1 sec-iot" id="iot-sec">
+    <div class="sec-body">
+      <h2 class="p-head ciot">IOT Projects ({{pCount.piCount}})</h2>
+      <div class="pp-mainbox-v2 iotBoxParent">
+        {% if proiot %} {% for i in proiot %}
+        <div class="pp-box iotBoxItem">
+          <div class="pp-box__txt">
+            <div class="pp-box__txt__head">
+              <h2>{{i.title}}</h2>
+            </div>
+            <div class="pp-box__txt__lead">
+              <p>{{i.des}}</p>
+              <h5>Technology used</h5>
+              <div class="n-list-item nmb-20">
+                {% for tc in i.techusedList %}
+                <span>{{tc}}</span>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="pp-box__txt__btn">
+              <a href="javascript:void(0)" class="nbtn-full">{{i.proStatus}}</a>
+              <a href="{{i.proGithub}}" class="nbtn-full">Github</a>
+              <a href="{{i.proLink}}" class="nbtn-full">View Project</a>
+            </div>
+          </div>
+          <div class="pp-box__pic">
+            <img
+              loading="lazy"
+              src="{{i.projectImgURL}}"
+              alt="{{hd.title}}"
+              class="pp-box__pic__1 img-fluid"
+            />
+          </div>
+        </div>
+        {% endfor %} {% else %}
+        <h2>Project Not Available</h2>
+        {% endif %}
+      </div>
+
+      <!-- extra -->
+
+      {% if proiot and pCount.piCount > 2 %}
+      <div class="nf-cenetr">
+        <button
+          class="nbtn-c ciot"
+          id="iotbtn"
+          onclick="getDataPro('iot','{{pCount.piCount}}','.iotBoxItem','.iotBoxParent','#iotbtn')"
+        >
+          View More <i class="fas fa-binoculars"></i>
+        </button>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+  <!-- End :IOT -->
+
+  {% if proother %}
+  <!-- Other -->
+  <section class="sec-v1-0 sec-hard" id="iot-sec">
+    <div class="sec-body">
+      <h2 class="p-head chard">Mini Project ({{pCount.poCount}})</h2>
+      <div class="pp-mainbox-v2 otherBoxParent">
+        {% for i in proother %}
+        <div class="pp-box otherBoxItem">
+          <div class="pp-box__txt">
+            <div class="pp-box__txt__head">
+              <h2>{{i.title}}</h2>
+            </div>
+            <div class="pp-box__txt__lead">
+              <p>{{i.des}}</p>
+              <h5>Technology used</h5>
+              <div class="n-list-item nmb-20">
+                {% for tc in i.techusedList %}
+                <span>{{tc}}</span>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="pp-box__txt__btn">
+              <a href="javascript:void(0)" class="nbtn-full">{{i.proStatus}}</a>
+              <a href="{{i.proGithub}}" class="nbtn-full">Github</a>
+              <a href="{{i.proLink}}" class="nbtn-full">View Project</a>
+            </div>
+          </div>
+          <div class="pp-box__pic">
+            <img
+              loading="lazy"
+              src="{{i.projectImgURL}}"
+              alt="{{hd.title}}"
+              class="pp-box__pic__1 img-fluid"
+            />
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- extra -->
+      {% if pCount.poCount > 2 %}
+      <div class="nf-cenetr">
+        <button
+          class="nbtn-c chard"
+          id="otherbtn"
+          onclick="getDataPro('other','{{pCount.poCount}}','.otherBoxItem','.otherBoxParent','#otherbtn')"
+        >
+          View More <i class="fas fa-binoculars"></i>
+        </button>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+  {% endif %}
+  <!-- End :IOT -->
+</div>
+{% endblock %} {% block javaScriptCode %}
+<script>
+  function getDataPro(proCat, totalItem, itemClass, parentClass, proBtnId) {
+    var pitemClass = itemClass.replace(".", "");
+
+    var _presentItem = $(itemClass).length;
+    var _html = "";
+
+    $.ajax({
+      url: "{% url 'load_pro' %}",
+      type: "post",
+      data: {
+        // data send to url
+        offset: _presentItem,
+        user: "{{user}}",
+        cat: proCat,
+        csrfmiddlewaretoken: "{{csrf_token}}",
+      },
+
+      beforeSend: function () {
+        $(proBtnId).attr("disabled", true).text("Loding ...");
+      },
+
+      success: function (res) {
+        var _html = " ";
+        var json_data = $.parseJSON(res.getPro);
+        var getUser = $.parseJSON(res.user);
+        if (getUser == "{{user}}") {
+          $.each(json_data, function (index, data) {
+            _html +=
+              '<div class="pp-box ' +
+              pitemClass +
+              '">\
+          <div class="pp-box__txt">\
+            <div class="pp-box__txt__head">\
+              <h2>' +
+              data.fields.title +
+              '</h2>\
+            </div>\
+            <div class="pp-box__txt__lead">\
+              <p>' +
+              data.fields.des +
+              '</p>\
+              <h5>Technology used</h5>\
+              <div class="n-list-item nmb-20">\
+               <span> ' +
+              data.fields.techused +
+              '</span>\
+              </div>\
+            </div>\
+            <div class="pp-box__txt__btn">\
+              <a href="javascript:void(0)" class="nbtn-full"\
+                >' +
+              data.fields.proStatus +
+              '</a\
+              >\
+              <a href="' +
+              data.fields.proGithub +
+              '" class="nbtn-full">Github</a>\
+              <a href="' +
+              data.fields.proLink +
+              '" class="nbtn-full">View Project</a>\
+            </div>\
+          </div>\
+          <div class="pp-box__pic">\
+            <img\
+              loading="lazy"\
+              src="/media/' +
+              data.fields.project_pic +
+              '"\
+              alt="' +
+              data.fields.title +
+              '\
+              class="pp-box__pic__1 img-fluid"\
+            />\
+          </div>\
+        </div>';
+          });
+          $(parentClass).append(_html);
+          _presentItem = $(itemClass).length;
+        }
+        if (totalItem <= _presentItem) {
+          $(proBtnId).addClass("ndisable").attr("disabled", true);
+        } else {
+          $(proBtnId)
+            .attr("disabled", false)
+            .text("View More")
+            .append(' <i class="fas fa-binoculars"></i>');
+        }
+      },
+    });
+  }
+</script>
+{% endblock %}

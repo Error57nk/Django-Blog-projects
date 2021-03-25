@@ -1,0 +1,75 @@
+{% extends 'blog/blogbase.html' %}
+{% load static %}
+{% block metaData %}
+{% endblock %}
+{% block tabName %} Result | {% endblock %}
+
+
+{% block maincon %}
+
+{% if post %}
+<h2 class="res-head">Result For "{{resfor}}" ({{rcount}})</h2>
+
+<div class="res-box">
+  {% for p in post %}
+  <div class="res-box__item">
+    <div class="res-box__item_img">
+      <a href="{% url 'post' p.slug %}"><img src="/media/{{p.thumb}}" class="img-fluid" alt="{{p.title}}" /></a>
+    </div>
+    <div class="nbadge-2"><i class="fas fa-mouse"></i> {{p.view}}</div>
+    <div class="res-box__item_info">
+      <a href="{% url 'post' p.slug %}">
+        <h3 class="b-head">{{p.title}}</h3>
+      </a>
+      <p>
+        <span class="auth"><a href="{% url 'author' p.user %}"><i class="fa fa-user"></i> {{p.user}}</a>
+          &nbsp;|&nbsp;</span>
+        <span><a href="{% url 'result' %}?cat={{p.cat}}"><i class="fas fa-puzzle-piece"></i>&nbsp;
+            {{p.cat}}</a></span>&nbsp;|&nbsp;
+        <span><i class="fas fa-puzzle-piece"></i>&nbsp; {{p.date}}</span>
+      </p>
+      <a href="{% url 'post' p.slug %}">
+        <p class="b-dec">{{p.desc|truncatechars:130}}</p>
+      </a>
+
+      <div class="">
+        <p class="srcTag">{% for tag in p.tagList %}
+          <span class="tagList">{{tag}}</span>
+          {% endfor %}</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<div class="paginator nmt-40 npt-10">
+  <p>
+    {% if post.has_previous %}
+    <a href="?page={{post.previous_page_number}}" class="nbtn-small nmr-10">Prev</a>
+    {% endif %}
+    <span>Showing page {{post.number}}</span>
+    {% if post.has_next %}
+    <a href="?page={{post.next_page_number}}" class="nbtn-small nml-10">Next</a>
+    {% endif %}
+  </p>
+</div>
+{% else %}
+<h2 class="nmt-40">Search Result (0)</h2>
+<p><b>Your search</b> - <b>{{resfor}}</b> - did not match any documents.</p>
+<p><b>Suggestions:</b></p>
+<ul class="bcon__ul_dot">
+  <li>Make sure that all words are spelled correctly.</li>
+  <li>Try different keywords.</li>
+  <li>Try more general keywords.</li>
+  <li>Try fewer keywords.</li>
+</ul>
+{% endif %}
+
+
+
+
+
+
+{% endblock %} {% block sidebar %} {% include 'blog/sideSec.html' %}
+{% endblock %} {% block javaScriptCode %}
+
+{% endblock %}

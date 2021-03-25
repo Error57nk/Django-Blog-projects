@@ -1,0 +1,318 @@
+{% extends 'portfolio/base.html' %} {% load static %} {% block metaData %}
+{%endblock%} {% block tabName %} Home | {% endblock %} {% block body_con %}
+
+<div class="main-containt__area">
+  <section class="sec-v1-0">
+    <div class="sec-body">
+      <h2 class="head-v1">About Me</h2>
+      <p class="np-10 bio-text">{{bio.bioabout|safe}}</p>
+      <div class="d-grid-gen">
+        <div class="abt-item n-center">
+          <h4 class="nnowrap">
+            <i class="fas fa-map-marker-alt"></i> {{bio.address}}
+          </h4>
+        </div>
+        <div class="abt-item n-center">
+          <h4 class="nnowrap">
+            <i class="fas fa-mobile-alt"></i> +91 {{bio.phone1}}
+          </h4>
+        </div>
+        <div class="abt-item n-center">
+          <h4 class="nnowrap">
+            <i class="fas fa-envelope-open-text"></i> {{bio.email1}}
+          </h4>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sec-v1-1">
+    <div class="sec-body">
+      <h2 class="head-v2">Area Of Intrest</h2>
+      <div class="area_intrest">
+        {% for ai in bio.areaIntrestList%}
+        <div class="area_intrest__item">
+          <h4>{{ai}}</h4>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <section class="sec-v1-0">
+    <div class="sec-body">
+      <h2 class="head-v1">Education</h2>
+      <div class="edu">
+        {% for ed in edu %}
+        <div class="edu__item">
+          <div class="edu__item__logo">
+            <img src="{{ ed.iconImgURL }}" alt="{{ed.degree}}" />
+          </div>
+          <div class="edu__item__lead">
+            <h4>{{ed.degree}}</h4>
+            <p>{{ed.branch}}</p>
+            <p>{{ed.instituteName}}</p>
+            <p>{{ed.year}}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <p class="np-10">
+        Below is a quick overview of my technical skill sets and technologies I
+        use, also check my <a href="">Online Resume</a> and
+        <a href="">project portfolio.</a>
+      </p>
+
+      <div class="skill">
+        {% for i in skill %}
+        <div class="skill__item">
+          <p><i class="{{i.logo_class}}"></i> {{i.tittle}}</p>
+        </div>
+
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <!-- Certificates -->
+  <section class="sec-v1-1">
+    <div class="sec-body">
+      <h2 class="head-v2">Certificates</h2>
+      <div class="certi">
+        {% for c in certi %}
+        <div class="certi__item">
+          <div class="certi__item__head">{{c.title}}</div>
+          <div class="certi__item__pic">
+            <img loading="lazy" src="{{c.certiImgURL}}" alt="{{c.title}}" />
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="center-center nmt-20">
+        <button class="btn-small__v2" id="abt-certibtn">View More</button>
+        {% comment %}
+        <button
+          class="btn-small__v2"
+          id="abt-certibtn"
+          onclick="nshhd('ab-certi','abt-certibtn')"
+        >
+          View More
+        </button>
+        {% endcomment %}
+      </div>
+    </div>
+  </section>
+  <!-- Section certi End: -->
+
+  <!-- Section projects -->
+
+  <section class="sec-v1-0 cweb">
+    <div class="sec-body">
+      <h2 class="head-v1">Projects</h2>
+      <div class="tab-head">
+        <div class="tab eff-1">
+          <button
+            class="tablinks cweb"
+            onclick="openSection(event, 'webProjects')"
+            id="defaultOpen"
+          >
+            Web Projects
+          </button>
+          <button class="tablinks capp" onclick="openSection(event, 'android')">
+            Android Apps
+          </button>
+          <button
+            class="tablinks chard"
+            onclick="openSection(event, 'hardware')"
+          >
+            hardware Projects
+          </button>
+          <button class="tablinks ciot" onclick="openSection(event, 'iot')">
+            iot based Projects
+          </button>
+        </div>
+      </div>
+
+      <div id="webProjects" class="tabcontent">
+        <div class="npro">
+          {% for pp in pro %} {% if pp.cat.id == 1 %}
+          <div class="npro__item">
+            <div class="npro__item__front">
+              <div class="pro-pic">
+                <img
+                  loading="lazy"
+                  class="img-fluid"
+                  src="{{pp.fetureImgURL}}"
+                  alt="{{pp.title}}"
+                />
+              </div>
+              <h4>{{pp.title}}</h4>
+            </div>
+            <div class="npro__item__back">
+              <div class="pro-lead">
+                <p>{{pp.des|truncatechars:150}}</p>
+                <a href="{{pp.proLink}}" class="btn-link"> View Website</a>
+              </div>
+            </div>
+          </div>
+          {% endif %} {% endfor %}
+        </div>
+      </div>
+      <!-- hardware -->
+      <div id="hardware" class="tabcontent">
+        <div class="npro">
+          {% for pp in pro %} {% if pp.cat.id == 3 %}
+          <div class="npro__item">
+            <div class="npro__item__front">
+              <div class="pro-pic">
+                <img
+                  loading="lazy"
+                  class="img-fluid"
+                  src="{{pp.fetureImgURL}}"
+                  alt="{{pp.title}}"
+                />
+              </div>
+              <h4>{{pp.title}}</h4>
+            </div>
+            <div class="npro__item__back">
+              <div class="pro-lead">
+                <p>{{pp.des|truncatechars:150}}</p>
+                <a href="{{pp.proLink}}" class="btn-link"> View Website</a>
+              </div>
+            </div>
+          </div>
+          {% endif %} {% endfor %}
+        </div>
+      </div>
+      <!-- Iot based -->
+      <div id="iot" class="tabcontent">
+        <div class="npro">
+          {% for pp in pro %} {% if pp.cat.id == 4 %}
+          <div class="npro__item">
+            <div class="npro__item__front">
+              <div class="pro-pic">
+                <img
+                  loading="lazy"
+                  class="img-fluid"
+                  src="{{pp.fetureImgURL}}"
+                  alt="{{pp.title}}"
+                />
+              </div>
+              <h4>{{pp.title}}</h4>
+            </div>
+            <div class="npro__item__back">
+              <div class="pro-lead">
+                <p>{{pp.des|truncatechars:150}}</p>
+                <a href="{{pp.proLink}}" class="btn-link"> View Website</a>
+              </div>
+            </div>
+          </div>
+          {% endif %} {% endfor %}
+        </div>
+      </div>
+      <!-- Android -->
+      <div id="android" class="tabcontent">
+        <div class="npro">
+          {% for pp in pro %} {% if pp.cat.id == 2 %}
+          <div class="npro__item">
+            <div class="npro__item__front">
+              <div class="pro-pic">
+                <img
+                  loading="lazy"
+                  class="img-fluid"
+                  src="{{pp.fetureImgURL}}"
+                  alt="{{pp.title}}"
+                />
+              </div>
+              <h4>{{pp.title}}</h4>
+            </div>
+            <div class="npro__item__back">
+              <div class="pro-lead">
+                <p>{{pp.des|truncatechars:150}}</p>
+                <a href="{{pp.proLink}}" class="btn-link"> View Website</a>
+              </div>
+            </div>
+          </div>
+          {% endif %} {% endfor %}
+        </div>
+      </div>
+
+      <div class="center-center nmt-20">
+        <!-- <button class="btn-small__v1">View More</button> -->
+        <a href="{% url 'projects' %}" class="btn-small__v1">View More</a>
+      </div>
+    </div>
+  </section>
+  <!-- END: Section projects -->
+  <section class="sec-v1-1">
+    <div class="sec-body">
+      <h2 class="head-v2">Hobbies</h2>
+      <div class="d-grid-gen">
+        {%for hb in hobbies %}
+
+        <div class="hobi-item">
+          <img
+            loading="lazy"
+            class="img-fluid"
+            src="{{hb.hobbiesImgURL}}"
+            alt="{{hb.title}}"
+          />
+          <p>{{hb.title}}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <!-- {% csrf_token %} -->
+</div>
+
+{% endblock %} {% block javaScriptCode %}
+<script>
+  $(document).ready(function () {
+    $("#abt-certibtn").on("click", function () {
+      var _currentResult = $(".certi__item").length;
+      // Run Ajax
+      $.ajax({
+        url: "{% url 'load_certi' %}",
+        type: "post",
+        data: {
+          // data send to url
+          offset: _currentResult,
+          user: "{{user}}",
+          csrfmiddlewaretoken: "{{csrf_token}}",
+        },
+        beforeSend: function () {
+          $("#abt-certibtn").attr("disabled", true).text("Loding Data...");
+        },
+        success: function (res) {
+          console.log(res);
+          var _html = "";
+          var json_data = $.parseJSON(res.getCerti);
+          var totalC = $.parseJSON(res.totalCerti);
+          $.each(json_data, function (index, data) {
+            _html +=
+              '<div class="certi__item">\
+            <div class="certi__item__head">' +
+              data.fields.title +
+              '</div>\
+            <div class="certi__item__pic">\
+              <img loading="lazy" src="/media/' +
+              data.fields.Images +
+              '" alt="' +
+              data.fields.title +
+              '" />\
+            </div>\
+          </div>';
+          });
+          $(".certi").append(_html);
+          var _currentChild = $(".certi__item").length;
+          if (totalC <= _currentChild) {
+            $("#abt-certibtn").attr("disabled", true).addClass("ndisable");
+          } else {
+            $("#abt-certibtn").attr("disabled", false).text("View More");
+          }
+        },
+      });
+    });
+  });
+</script>
+{% endblock %}

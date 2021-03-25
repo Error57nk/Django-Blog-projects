@@ -1,0 +1,187 @@
+{% extends 'blog/blogbase.html' %} {% load static %} {% block metaData %}
+{%endblock %} {% block styleData %}
+
+{% endblock %} {% block tabName %} {% if update %} Update {% else %} Upload {% endif %}| {% endblock %}
+{% block banner %}
+<!-- <div class="">
+  <img src="{% static 'blog/images/travel.jpg' %}" alt="NiteshKr" id="imageID">
+</div> -->
+<section class="cropper-sec hide-croper" id="croper-model">
+  <div id="croper-model-img"></div>
+  <div class="nform-box-2 cropper-btn">
+    <button class="nbtn nbtn-primary" id="croper-cancel-btn">Cancel</button>
+
+    <button class="nbtn nbtn-primary" id="croper-save-btn">OK</button>
+  </div>
+</section>
+{% endblock %} {% block maincon %}
+<div class="alert-box"></div>
+
+<h2 class="nmb-30 nmt-40">
+  {% if update %} Update Post {% else %} Creat New Post {% endif %}
+</h2>
+
+<form method="POST" enctype="multipart/form-data" id="postForm">
+  {% csrf_token %}
+
+  <div class="form-group">{{form.title.label}} {{form.title}}</div>
+
+  <div class="nform-box-2">
+    {% if update %}
+    <div class="form-group">
+      {{form.thumb.label}}
+      {{form.thumb}}
+    </div>
+    <div class="form-group">
+      {{form.banner.label}}
+      {{form.banner}}
+    </div>
+    <script>$('#thumb_id').css("opacity", "1!important");</script>
+    {% else %}
+
+    <div class="custom-file">
+      <label for="customFile" class="custom-file-label">{{form.thumb.label}}</label>
+      {{form.thumb}}
+    </div>
+    <div class="custom-file">
+      <label for="customFile" class="custom-file-label">{{form.banner.label}}</label>
+      {{form.banner}}
+    </div>
+
+    {% endif %}
+
+  </div>
+  <div class="form-group">{{form.desc.label}} {{form.desc}}</div>
+
+
+  <div class="nform-box-2">
+    <div class="form-group">{{form.cat.label}} {{form.cat}}</div>
+    <div class="form-group hide-croper">
+      {{form.pic1}}
+      {{form.pic2}}
+      {{form.pic3}}
+      {{form.pic4}}
+      {{form.pic5}}
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <div class="nform-box-1 form-group nrel">
+    {{form.content.label}} {{form.content}}
+    <div class="addSectionBox">
+      <p class="nmb-0 addSectionBox__btn" id="addbtn">
+        <i class="fas fa-plus-circle"></i> Add
+      </p>
+      <ul class="addSectionBox__list">
+        <li data-code="#hd1 --txt-- hd1#" onclick="addCode(this)">
+          Add Sub Header1
+        </li>
+        <li data-code="#hd2 --txt-- hd2#" onclick="addCode(this)">
+          Add Sub Header2
+        </li>
+
+        <li data-code="#cd1 --txt-- cd1#" onclick="addCode(this)">Add Code</li>
+        <li data-code="#lnkr --https://www-- #lnkn --My link-- lnke#" onclick="addCode(this)">
+          Add Link
+        </li>
+        <li data-code="#uld1 *li --txt-- li* uld1#" onclick="addCode(this)">
+          Add List dot
+        </li>
+        <li data-code="#uld2 *li --txt-- li* uld2#" onclick="addCode(this)">
+          Add List star
+        </li>
+        <li data-code="#uld3 *li --txt-- li* uld3#" onclick="addCode(this)">
+          Add List check
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="form-group nform">{{form.tag.label}} {{form.tag}}</div>
+  <div class="form-group">{{form.media.label}} {{form.media}}</div>
+  <div class="nform-box-2 form-group">
+    <button type="reset" class="nbtn nbtn-yellow">Clear All</button>
+    <button class="nbtn nbtn-primary1" type="submit">
+      Submit Post
+    </button>
+  </div>
+</form>
+
+{% endblock %} {% block sidebar %}
+<div class="post-instructions">
+  <h4>Instruction</h4>
+  <p class="nfont-12">
+    Insert respective Code in *Blog Main Containt field After uploding media
+    image if <b>auto add media code</b> is unchecked
+  </p>
+</div>
+
+
+<div class="post-media">
+  <h4>Media Images (5) <small class="nfont-8">860X350px</small> </h4>
+  <div class="form-group">
+    <input type="checkbox" name="autocode" id="nautocd"> Auto add media code
+  </div>
+  <ul class="npl-0">
+    <li><button id="fmpic1" class="nmb-5 nbtn nbtn-primary" data-code=#pic#1 data-imgid="id_pic1"
+        onclick="getSetPic(this)">Content Pic
+        1 <small class="nfont-8">#pic#1</small></button>
+    </li>
+    <li><button id="fmpic2" class="nmb-5 nbtn nbtn-primary" data-code=#pic#2 data-imgid="id_pic2"
+        onclick="getSetPic(this)">Content Pic
+        2 <small class="nfont-8">#pic#2</small></button>
+    </li>
+    <li><button id="fmpic3" class="nmb-5 nbtn nbtn-primary" data-code=#pic#3 data-imgid="id_pic3"
+        onclick="getSetPic(this)">Content Pic
+        3 <small class="nfont-8">#pic#3</small></button>
+    </li>
+    <li><button id="fmpic4" class="nmb-5 nbtn nbtn-primary" data-code=#pic#4 data-imgid="id_pic4"
+        onclick="getSetPic(this)">Content Pic
+        4 <small class="nfont-8">#pic#4</small></button>
+    </li>
+    <li><button id="fmpic5" class="nmb-5 nbtn nbtn-primary" data-code=#pic#5 data-imgid="id_pic5"
+        onclick="getSetPic(this)">Content Pic
+        5 <small class="nfont-8">#pic#5</small></button>
+    </li>
+  </ul>
+
+</div>
+
+
+
+{% endblock %} {% block javaScriptCode %}
+<script>
+
+  $("#srcBox").hide();
+  $("#raw-src").hide();
+
+  $(".form-input").on("change", function () {
+    var fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+  });
+  var btn_id;
+  function getSetPic(newObj) {
+    btn_id = $(newObj).attr("id");
+    var imgField_id = $(newObj).attr("data-imgid");
+    $('#' + imgField_id).click();
+  }
+  $(".media-input").on("change", function () {
+    var fileName = $(this).val().split("\\").pop();
+    $("#" + btn_id).html(fileName);
+    $('#' + btn_id).css("background-color", "#fc575e");
+    if ($("#nautocd").prop('checked')) {
+      var oldData = $("#bconid").val() + "\n" + $('#' + btn_id).attr("data-code");
+      $("#bconid").val(oldData);
+    }
+
+    if (!$("#id_media").prop('checked')) {
+      alert("media Added")
+      $("#id_media").prop("checked", true);
+    }
+  })
+</script>
+{% endblock %}

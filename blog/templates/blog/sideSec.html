@@ -1,0 +1,122 @@
+{% if user.is_authenticated %}
+<div class="admin-sec">
+  <h4><i class="far fa-user"></i> : {{request.user}}</h4>
+  <ul class=" bcon__ul_dot">
+    <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
+    {% if profile %}
+    <li><a href="{% url 'update-profile' %}"><i class="far fa-user"></i> Update Profile</a></li>
+    {% else %}
+    <li><a href="{% url 'profile' %}"><i class="far fa-user"></i> Profile</a></li>
+    {% endif %}
+    <li><a href="{% url 'upload' %}"><i class="fas fa-plus"></i> Create&nbsp;Post</a></li>
+    <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+  </ul>
+</div>
+
+{% else %}
+<div class="admin-sec">
+  <h4><i class="far fa-user"></i> User</h4>
+  <a href="{% url 'login' %}" class="npl-20"><i class="far fa-user"></i> Login</a> <br />
+  <small class="npl-20"><a href="{% url 'register' %}">or, Create Account</a></small>
+</div>
+
+{% endif %}
+
+
+
+
+
+
+<div class="connect-box">
+  <h4>Connect</h4>
+  <ul class="npl-0 social-v">
+    <li>
+      <a href="https://www.linkedin.com/in/nitesh-kr" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </li>
+    <li>
+      <a href="https://github.com/Error57nk" target="_blank"><i class="fab fa-github"></i></a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/c/TechNick57" target="_blank"><i class="fab fa-youtube"></i></a>
+    </li>
+    <li>
+      <a href="https://wa.me/919679310464" target="_blank"><i class="fab fa-facebook"></i></a>
+    </li>
+    <li>
+      <a href="https://wa.me/919679310464" target="_blank"><i class="fab fa-instagram"></i></a>
+    </li>
+  </ul>
+</div>
+<div class="post-blog" id="postSec">
+  <h4>Post Blog</h4>
+  <a href="{% url 'upload' %}" class="nbtn nbtn-primary">Post Blog</a>
+</div>
+<div class="category-box">
+  <h4>Categories</h4>
+  <ul class="npl-0">
+    {% for c in cat %}
+    <li class="cat-item">
+      <a href="{% url 'result'%}?cat={{c.cat}}">
+        <img src="/media/{{c.catImg}}" class="img-fluid" alt="categories55X235" />
+        <p>{{c.cat}}</p>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="popular-box">
+  <h4>Popular Posts</h4>
+  <ul class="npl-0 popular-box__ul">
+    {% for pp in ppost %}
+    <li class="popu-item">
+      <a href="{% url 'post' pp.slug %}">
+        <img src="/media/{{pp.thumb}}" alt="TechNick" width="70" height="70" />
+        <div class="popu-item__info">
+          <p class="side-head">{{pp.title}}</p>
+          <div class="popu-des">
+            <span class="pop-item__user">
+              <i class="far fa-user"></i> {{pp.user}} |
+            </span>
+            <span class="pop-item__cat">
+              <i class="fas fa-puzzle-piece"></i> {{pp.cat}}
+            </span>
+          </div>
+        </div>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="recent-box">
+  <h4>Recent Posts</h4>
+  <ul class="npl-0 recent-box__ul">
+    {% for rp in rpost %}
+    <li class="rec-item">
+      <a href="{% url 'post' rp.slug %}">
+        <span class="rec-item__cat"><i class="fas fa-puzzle-piece"></i> {{rp.cat}}</span>
+        <p class="side-head">{{rp.title}}</p>
+
+        <div class="rec-item__info">
+          <span><i class="far fa-user"></i> {{rp.user}} |</span>
+          <span class="rec-item__date"><i class="far fa-clock"></i> {{rp.date}}</span>
+        </div>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% comment %}
+<div class="insta-box">
+  <h4>Instagram</h4>
+  <div class="insta-box__item">
+    <img src="./images/thumb.jpg" alt="NiteshKumar" class="img-fluid" />
+    <img src="./images/thumb.jpg" alt="NiteshKumar" class="img-fluid" />
+    <img src="./images/thumb.jpg" alt="NiteshKumar" class="img-fluid" />
+    <img src="./images/thumb.jpg" alt="NiteshKumar" class="img-fluid" />
+    <img src="./images/thumb.jpg" alt="NiteshKumar" class="img-fluid" />
+  </div>
+</div>
+{% endcomment %}

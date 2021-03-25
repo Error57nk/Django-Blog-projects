@@ -1,0 +1,90 @@
+{% load static %}
+<div class="hamburger">
+  <button class="nbtn-trans h-btn" id="hamtog">
+    <i class="fas fa-bars" id="ham-icon"></i>
+  </button>
+
+  <ul class="top-nav__social">
+    <li>
+      <a href="{{slink.linkedin}}"><i class="fab fa-linkedin"></i></a>
+    </li>
+
+    <li>
+      <a href="{{slink.github}}" target="_blank"
+        ><i class="fab fa-github"></i
+      ></a>
+    </li>
+    <li>
+      <a href="{{slink.youtube}}" target="_blank"
+        ><i class="fab fa-youtube"></i
+      ></a>
+    </li>
+    <li>
+      <a href="{{slink.whatsapp}}" target="_blank"
+        ><i class="fab fa-whatsapp"></i
+      ></a>
+    </li>
+  </ul>
+</div>
+<div class="side-nav" id="sidenav_toggler">
+  <div class="n-stky">
+    <div class="side-nav__pic">
+      <img src="{{bio.profileImgURL}}" alt="Profile Pic" class="img-fluid" />
+      <h4 class="side-nav__pic__name">{{bio.name}}</h4>
+    </div>
+
+    <div class="side-nav__social">
+      <ul class="d-grid">
+        <li>
+          <a href="{{slink.linkedin}}"><i class="fab fa-linkedin"></i></a>
+        </li>
+
+        <li>
+          <a href="{{slink.github}}" target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+        </li>
+        <li>
+          <a href="{{slink.youtube}}" target="_blank"
+            ><i class="fab fa-youtube"></i
+          ></a>
+        </li>
+        <li>
+          <a href="{{slink.whatsapp}}" target="_blank"
+            ><i class="fab fa-whatsapp"></i
+          ></a>
+        </li>
+      </ul>
+    </div>
+
+    <ul class="side-nav__links">
+      <li id="active">
+        <a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
+      </li>
+      <li>
+        <a href="{% url 'about' %}"
+          ><i class="fas fa-chess-knight"></i> About</a
+        >
+      </li>
+      <li>
+        <a href="{% url 'projects' %}"
+          ><i class="fas fa-drafting-compass"></i> Projects</a
+        >
+      </li>
+
+      <li>
+        <a href="{% url 'resume' %}" target="_blank"
+          ><i class="fas fa-id-badge"></i> Resume</a
+        >
+      </li>
+      <li>
+        <a href="{% url 'contact' %}"
+          ><i class="fas fa-paper-plane"></i> Contact</a
+        >
+      </li>
+    </ul>
+    <div class="nbtn nbtn__orange">
+      <i class="fas fa-campground"></i> Hire Me
+    </div>
+  </div>
+</div>

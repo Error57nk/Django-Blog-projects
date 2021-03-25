@@ -1,0 +1,5 @@
+penv
+.vscode
+setup_lib.txt
+*.sqlite3
+*.sqlite

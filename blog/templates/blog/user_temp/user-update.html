@@ -1,0 +1,76 @@
+{% extends 'blog/blogbase.html' %}
+{% load static %}
+{% block metaData %}
+{% endblock %}
+{% block tabName %} {{user|upper}} Edit | {% endblock %}
+
+{% block banner %}
+
+<div class="edit-profile-banner">
+  <img src="/media/{{user.userprofile.banner}}" alt="{{user.username}}" class="img-fluid">
+  <div class="edit-profile-banner__abs">
+    <img src="/media/{{user.userprofile.profilepic}}" alt="{{user.username}}"
+      class="img-fluid edit-profile-banner__pic">
+    <h4>{{user}}</h4>
+  </div>
+</div>
+
+{% endblock %}
+{% block maincon %}
+{{error}}
+<form action="" method="POST" class="nmt-40" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="nform-box-2">
+    <div class="form-group">{{uform.first_name.label}}{{uform.first_name}}{{uform.first_name.errors}}</div>
+    <div class="form-group">{{uform.last_name.label}}{{uform.last_name}}{{uform.last_name.errors}}</div>
+  </div>
+  <div class="form-group">{{uform.username.label}}{{uform.username}}{{uform.username.errors}}</div>
+  <div class="form-group">{{uform.email.label}}{{uform.email}}{{uform.email.errors}}</div>
+  <div class="form-group">{{form.phone.label}}{{form.phone}}{{form.phone.errors}}</div>
+  <div class="form-group">{{form.userName}}</div>
+
+  <hr>
+
+  <div class="nform-box-2 form-group nmt-20">
+    <div class="form-group">{{form.profilepic.label}}<br>{{form.profilepic.errors}}{{form.profilepic}}</div>
+    <div class="form-group">{{form.banner.label}}<br>{{form.banner.errors}}{{form.banner}}</div>
+  </div>
+  <div class="form-group">
+    <div class="form-group">{{form.bio.label}}<br>{{form.bio.errors}}{{form.bio}}</div>
+
+  </div>
+  <div class="nform-box-2 form-group">
+    <div class="form-group">{{form.link1.label}}<br>{{form.link1.errors}}{{form.link1}}</div>
+    <div class="form-group">{{form.link1Icon.label}}<br>{{form.link1Icon}}</div>
+  </div>
+  <div class="nform-box-2 form-group">
+    <div class="form-group">{{form.link2.label}}<br>{{form.link2.errors}}{{form.link2}}</div>
+    <div class="form-group">{{form.link2Icon.label}}<br>{{form.link2Icon}}</div>
+  </div>
+  <div class="nform-box-2 form-group">
+    <div class="form-group">{{form.link3.label}}<br>{{form.link3.errors}}{{form.link3}}</div>
+    <div class="form-group">{{form.link3Icon.label}}<br>{{form.link3Icon}}</div>
+  </div>
+  <div class="nform-box-2 form-group">
+    <div class="form-group">{{form.link4.label}}<br>{{form.link4.errors}}{{form.link4}}</div>
+    <div class="form-group">{{form.link4Icon.label}}<br>{{form.link4Icon}}</div>
+  </div>
+
+
+
+  <div class="nform-box-2 form-group ">
+    <a href="{% url 'profile' %}" class="nbtn nbtn-yellow">Cancel</a>
+    <button class="nbtn nbtn-primary1" type="submit">
+      Update
+    </button>
+  </div>
+</form>
+
+
+
+
+
+{% endblock %} {% block sidebar %} {% include 'blog/sideSec.html' %}
+{% endblock %} {% block javaScriptCode %}
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% load static %}
+<header class="head">
+  <a href="{% url 'home' %}" class="head__logo">
+    <img src="{% static 'blog/images/thumb.jpg' %}" alt="Front Root" />
+    <h2><span>Tech </span>Nick</h2>
+  </a>
+  <div class="head__links">
+    <ul>
+      <li>
+        <a href="https://www.linkedin.com/in/nitesh-kr" target="_blank"><img
+            src="{% static 'blog/images/icons/linkedin.png' %}" alt="linkedin" /></a>
+      </li>
+      <li>
+        <a href="https://www.github.com/error57nk" target="_blank"><img
+            src="{% static 'blog/images/icons/github.png' %}" alt=" github" /></a>
+      </li>
+
+      <li>
+        <a href="https://www.facebook.com/TechNick57" target="_blank"><img
+            src="{% static 'blog/images/icons/facebook.png' %}" alt="facebook" /></a>
+      </li>
+
+      <li>
+        <a href="https://www.youtube.com/c/TechNick57" target="_blank"><img
+            src="{% static 'blog/images/icons/youtube.png' %}" alt="youtube" /></a>
+      </li>
+
+      <li>
+        <a href="https://www.instagram.com/am_nitesh/" target="_blank"><img
+            src="{% static 'blog/images/icons/instagram.png' %}" alt="instagram" /></a>
+      </li>
+      <li class="nusernk">
+        <button id="userdot" class="nusernk__btn">
+          <i class="fas fa-ellipsis-v"></i>
+        </button>
+        <ul class="nusernk__list">
+          {%if user.is_authenticated%}
+          <li><a href="{% url 'profile' %}"><i class="far fa-user"></i>&nbsp;Profile</a></li>
+          <li><a href="{% url 'upload' %}"><i class="fas fa-plus"></i>&nbsp;Create Post</a></li>
+
+
+
+          <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a></li>
+          {%else%}
+          <li><a href="{% url 'login' %}"><i class="far fa-user"></i>&nbsp;Login</a></li>
+          <li><a href="{% url 'register' %}"><i class="fas fa-user-plus"></i>&nbsp;Creat&nbsp;Account</a></li>
+          {%endif%}
+        </ul>
+      </li>
+    </ul>
+  </div>
+</header>

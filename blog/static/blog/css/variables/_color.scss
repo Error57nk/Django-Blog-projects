@@ -1,0 +1,30 @@
+$body-bg: #e1e4ba33;
+$body-bg2: #e1e4ba;
+// $foot-bg: #d1d68a;
+$foot-bg: #f7dfaf;
+$primary-orange0: #f7b42c;
+$primary-orange1: #fc575e;
+$primary-orange: $primary-orange0;
+
+$grad-1: linear-gradient(315deg, $primary-orange1 0%, $primary-orange0 74%);
+$grad-2: linear-gradient(315deg, $primary-orange0 0%, $primary-orange1 74%);
+$grad-3: linear-gradient(180deg, $primary-orange0 0%, $primary-orange1 74%);
+$grad-4: linear-gradient(180deg, $primary-orange1 0%, $primary-orange0 74%);
+
+$color-white: #fff;
+$color-black1: #000;
+$color-black0: #121212;
+$color-dark-light: #ccc;
+$color-dark-mid: #777;
+$color-dark-deep: #333;
+
+$boder-1: 1px solid $color-dark-light;
+
+$shad-0: 1px 1px 2px #a19f9f;
+$shad-logo: 3px -2px 6px #333;
+$shad-1: 1px 1px 5px #a19f9f;
+$shad-3: -1px 2px 4px $color-black1;
+$shadbtn-1: 2px 2px 15px $primary-orange1;
+$shadbtn-0: 2px 2px 5px $primary-orange1;
+$gradient-light: 1;
+// cat Color

@@ -1,0 +1,115 @@
+{% extends 'blog/blogbase.html' %} {% load static %}
+{% block metaData %}{%endblock %} {% block tabName %} {{userprofile.userName|upper}} {% endblock %} {% block banner %}
+<div class="header-banner">
+  <img src="/media/{{userprofile.banner}}" alt="{{userdata.username}}" class="img-fluid" />
+  <div class="header-banner__info">
+    <div class="header-banner__info_img">
+      <img src="/media/{{userprofile.profilepic}}" class="img-fluid" alt="{{userdata.username}}" />
+    </div>
+    <div class="header-banner__info_des">
+      <h4>{{userdata.get_full_name}} (<small>{{userdata.username}}</small>)</h4>
+      <p>{{userdata.email}}</p>
+
+      <ul class="social-v">
+        <li class=" ">
+          <a href="{{userprofile.link1}}" class="primary-color2" target="_blank"><i
+              class="{{userprofile.link1Icon}}"></i></a>
+        </li>
+        <li class=" ">
+          <a href="{{userprofile.link2}}" class="primary-color2" target="_blank"><i
+              class="{{userprofile.link2Icon}}"></i></a>
+        </li>
+        <li class=" ">
+          <a href="{{userprofile.link3}}" class="primary-color2" target="_blank"><i
+              class="{{userprofile.link3Icon}}"></i></a>
+        </li>
+        <li class=" ">
+          <a href="{{userprofile.link4}}" class="primary-color2" target="_blank"><i
+              class="{{userprofile.link4Icon}}"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block maincon %}
+<div class="profile">
+  <div class="">
+    <h2 class="">About : {{userdata.get_full_name}}</h2>
+    <p>{{userprofile.bio}}</p>
+  </div>
+</div>
+<div class="profile-blog nmt-30">
+  <h4 class="">Total Post ({{tpost}})</h4>
+  <div class="res-box nmt-20">
+    {% if tpost == 0%}
+    <p>Create your First Post <b><i><a href="{% url 'upload' %}">click here !</a></i></b></p>
+    {% endif %}
+
+    {% for p in post %}
+    <div class="res-box__item">
+      <div class="res-box__item_img">
+        <a href="{% url 'post' p.slug %}"><img src="/media/{{p.thumb}}" class="img-fluid" alt="{{p.title}}" /></a>
+      </div>
+      <div class="nbadge-2"><i class="fas fa-mouse"></i> {% if p.ready %}{{p.view}}{%else%}Pending{%endif%}</div>
+      <div class="res-box__item_info">
+        <a href="{% url 'post' p.slug %}">
+          <h3 class="b-head">{{p.title}}</h3>
+        </a>
+        <p>
+          <span class="auth"><a href="{% url 'author' p.user %}"><i class="fa fa-user"></i> {{p.user}}</a>
+            &nbsp;|&nbsp;</span>
+          <span><a href="{% url 'result' %}?cat={{p.cat}}"><i class="fas fa-puzzle-piece"></i>&nbsp;
+              {{p.cat}}</a></span>&nbsp;|&nbsp;
+          <span><i class="fas fa-puzzle-piece"></i>&nbsp; {{p.date}}</span>
+        </p>
+        <a href="{% url 'post' p.slug %}">
+          <p class="b-dec">{{p.desc|truncatechars:130}}</p>
+        </a>
+        <div class="">
+          <p class="srcTag">
+            {% for tag in p.tagList %}
+            <span class="tagList">{{tag}}</span>
+            {% endfor %}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+
+<div class="paginator nmt-40 npt-10">
+  <p>
+    {% if post.has_previous %}
+    <a href="?page={{post.previous_page_number}}" class="nbtn-small nmr-10">Prev</a>
+    {% endif %}
+    <span>Showing page {{post.number}}</span>
+    {% if post.has_next %}
+    <a href="?page={{post.next_page_number}}" class="nbtn-small nml-10">Next</a>
+    {% endif %}
+  </p>
+</div>
+{% endblock %}
+
+<!-- UserBlock -->
+{%block userblock%}
+
+
+{% endblock %}
+<!-- SideBar -->
+{% block sidebar %}
+
+{% include 'blog/sideSec.html' %}
+{% endblock %}
+
+
+
+<!-- Javascrpts -->
+{% block javaScriptCode %}
+
+<script>
+  $("#raw-src").hide();
+</script>
+{% endblock %}

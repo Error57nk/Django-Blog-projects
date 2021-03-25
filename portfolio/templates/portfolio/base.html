@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block metaData %} {% endblock %}
+    <link
+      rel="stylesheet"
+      href="{% static 'portfolio/css/fontawesome.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'portfolio/css/main.css' %}" />
+
+    <title>{% block tabName %} {% endblock %} {{bio.name}}</title>
+  </head>
+
+  <body>
+    <section id="home-layout">
+      {% include 'portfolio/header.html' %}
+
+      <div class="main-containt">
+        {% include 'portfolio/header_banner.html' %} {%block body_con%}
+        {%endblock%}
+      </div>
+    </section>
+    {% include 'portfolio/footer.html' %} {%block javaScriptCode%} {%endblock%}
+  </body>
+</html>

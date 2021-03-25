@@ -1,0 +1,49 @@
+{% extends 'blog/blogbase.html' %} {% load static %} {% block tabName %} Delete
+{% endblock %} {% block maincon %}
+
+<h4 class="nmb-15 nmt-40">Delete Post: {{object.title}}</h4>
+
+<div class="res-box nmt-20">
+  <div class="res-box__item">
+    <div class="res-box__item_img">
+      <a href="{% url 'post' object.slug %}"><img src="/media/{{object.thumb}}" class="img-fluid"
+          alt="{{object.title}}" /></a>
+    </div>
+    <div class="nbadge-2">
+      <i class="fas fa-mouse"></i>
+      {% if object.ready %}{{object.view}}{%else%}Pending{%endif%}
+    </div>
+    <div class="res-box__item_info">
+      <a href="{% url 'post' object.slug %}">
+        <h3 class="b-head">{{object.title}}</h3>
+      </a>
+      <p>
+        <span class="auth"><a href="{% url 'author' object.user %}"><i class="fa fa-user"></i> {{object.user}}</a>
+          &nbsp;|&nbsp;</span>
+        <span><a href="{% url 'result' %}?cat={{object.cat}}"><i class="fas fa-puzzle-piece"></i>&nbsp;
+            {{object.cat}}</a></span>&nbsp;|&nbsp;
+        <span><i class="fas fa-puzzle-piece"></i>&nbsp; {{object.date}}</span>
+      </p>
+      <a href="{% url 'post' object.slug %}">
+        <p class="b-dec">{{object.desc|truncatechars:130}}</p>
+      </a>
+      <div class="">
+        <p class="srcTag">
+          {% for tag in object.tagList %}
+          <span class="tagList">{{tag}}</span>
+          {% endfor %}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <div class="nform-box-2">
+    <a href="{% url 'profile' %}" class="nbtn nbtn-yellow">Cancel</a>
+    <button type="submit" class="nbtn nbtn-red">Yes, Delete Post</button>
+  </div>
+</form>
+
+{% endblock %}

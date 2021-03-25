@@ -1,0 +1,49 @@
+{% load static %}
+<section class="pf">
+  <div class="pffoot">
+    <div class="pffoot__img">
+      <img src="{{bio.profileImgURL}}" alt="Nitesh Kumar" />
+    </div>
+    <div class="pffoot__info">
+      <h4>Nitesh Kumar</h4>
+      <ul class="top-nav__social nmb-0">
+        <li>
+          <a href="{{slink.linkedin}}"
+            ><i class="fab fa-linkedin"></i> nitesh-kr</a
+          >
+        </li>
+        <li>
+          <a href="{{slink.github}}"><i class="fab fa-github"></i> error57nk</a>
+        </li>
+        <li>
+          <a href="{{slink.youtube}}"
+            ><i class="fab fa-youtube"></i> technick</a
+          >
+        </li>
+        <li>
+          <a href="{{slink.whatsapp}}"
+            ><i class="fab fa-whatsapp"></i> nitesh</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="pffoot__legal">
+      <p class="pf_links">
+        <span><a href="{% url 'home' %}">Home</a></span>
+        <span><a href="{% url 'about' %}">About</a></span>
+        <span><a href="{% url 'projects' %}">Project</a></span>
+        <span><a href="{% url 'about' %}">Contact</a></span>
+        <span><a href="{% url 'resume' %}" target="_blank">Resume</a></span>
+      </p>
+      <p class="nmb-0">© 2021 NiteshKumar</p>
+    </div>
+  </div>
+</section>
+
+<div class="page-scroller">
+  <a href="#"><i class="fas fa-angle-up"></i></a>
+</div>
+
+<script src="{% static 'portfolio/js/jquery.js' %}"></script>
+<script src="{% static 'portfolio/js/fontawesome.min.js' %}"></script>
+<script src="{% static 'portfolio/js/main.js' %}"></script>

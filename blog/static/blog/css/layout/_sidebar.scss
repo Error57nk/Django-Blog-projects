@@ -1,0 +1,151 @@
+.side-head {
+  font-size: 14px !important;
+  margin-bottom: 3px !important;
+  font-weight: 600;
+  @include breakpt(phone) {
+    font-size: 13px;
+  }
+  @include breakpt(iphone) {
+    font-size: 13px;
+  }
+}
+
+.src-box {
+  .form-group {
+    position: relative;
+  }
+  position: relative;
+  .src-icon-btn {
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+}
+
+.category-box {
+  ul {
+    @media screen and (max-width: 628px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 10px;
+    }
+    @media screen and (max-width: 480px) {
+      display: unset;
+      // grid-template-columns: 1fr;
+    }
+  }
+  .cat-item {
+    position: relative;
+    margin-bottom: 10px;
+    &:hover {
+      box-shadow: $shad-3;
+    }
+    a {
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(#333, 0.6);
+      }
+    }
+    img {
+      width: 100%;
+      height: auto;
+    }
+    p {
+      font-size: 15px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: $color-white;
+      font-weight: bold;
+      z-index: 99;
+      white-space: nowrap;
+    }
+  }
+}
+
+.recent-box {
+  .rec-item {
+    padding: 0px 7px 7px 7px;
+    position: relative;
+    // border-left: 1px d #333;
+    border-left: 2px dashed $color-dark-deep;
+    margin-bottom: 17px;
+    &:hover {
+      border-color: $primary-orange;
+    }
+    &:hover .rec-item__cat {
+      color: $primary-orange;
+    }
+    &__cat {
+      font-size: 12px;
+      font-weight: 600;
+      padding-left: 10px;
+      padding-right: 10px;
+      background-color: rgba(255, 255, 255, 0.918);
+    }
+
+    &__info {
+      span {
+        font-size: 12px;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+.popular-box {
+  .popu-item {
+    margin-bottom: 15px;
+    &:hover img {
+      background-color: $primary-orange1;
+    }
+    a {
+      display: flex;
+      img {
+        padding: 2px;
+        background-color: $primary-orange;
+      }
+    }
+
+    &__info {
+      padding-left: 7px;
+
+      .popu-des {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.insta-box {
+  border-bottom: none !important;
+  &__item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+  }
+}
+
+.connect-box {
+  .social-v::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    right: 5px;
+    height: 15px;
+    transform: translateY(-50%);
+    background-color: $primary-orange1;
+    z-index: -1;
+  }
+}
+.post-blog {
+}

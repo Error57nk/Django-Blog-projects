@@ -1,0 +1,29 @@
+{% extends 'blog/blogbase.html' %} {% load static %} {% block tabName %} Create Account
+{% endblock %} {% block maincon %}
+<div class="userReg">
+  <div class="userLogin-box">
+    <h4 class="nmb-15">Create Account</h4>
+    <form action="" method="POST">
+      {% csrf_token %}
+
+      <div class="nform-box-2">
+        <div class="form-group">{{form.first_name.label}}{{form.first_name}}{{form.first_name.errors}}</div>
+        <div class="form-group">{{form.last_name.label}}{{form.last_name}}{{form.last_name.errors}}</div>
+      </div>
+      <div class="form-group">{{form.username.label}}{{form.username}}{{form.username.errors}}</div>
+      <div class="form-group">{{form.email.label}}{{form.email}}{{form.email.errors}}</div>
+      <div class="form-group">{{form.password1.label}}{{form.password1}}{{form.password1.errors}}</div>
+      <div class="form-group">{{form.password2.label}}{{form.password2}}{{form.password2.errors}}</div>
+
+      <div class="">
+        <button type="submit" class="nbtn-small">Create</button>
+        <br />
+        <p class="nfont-12 nmt-10">
+          Already have Account ?, <a href="{% url 'login' %}">Login here</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

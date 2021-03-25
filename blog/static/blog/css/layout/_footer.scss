@@ -1,0 +1,163 @@
+.ft-sec {
+  background: $foot-bg;
+}
+.pf {
+  background: $foot-bg;
+
+  padding: 40px 50px;
+  @include breakpt(tablet) {
+    padding: 0px 10px;
+  }
+  @include breakpt(phone) {
+    padding: 0px 10px;
+  }
+
+  &foot {
+    display: grid;
+    // grid-template-columns: 150px 400px 1fr;
+    grid-template-areas: "img info legal";
+    @include breakpt(laptop) {
+      grid-template-areas: "img info" "img legal";
+    }
+    @include breakpt(tablet) {
+      grid-template-areas: "img info" "img legal";
+      padding: 0px 10px;
+    }
+    @include breakpt(phone) {
+      grid-template-areas: "img " "info" " legal";
+    }
+    &__img {
+      grid-area: img;
+      //   background-color: red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include breakpt(phone) {
+        display: none;
+      }
+      img {
+        padding: 7px;
+        border-radius: 50%;
+        border: 2px solid $primary-orange1;
+        height: 100px;
+        width: auto;
+      }
+    }
+    &__info {
+      grid-area: info;
+      background-color: rgba(#fff, 0.5);
+      padding: 20px;
+      display: flex;
+      text-transform: capitalize;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      clip-path: polygon(
+        3% 32%,
+        6% 15%,
+        0 0,
+        99% 0,
+        100% 100%,
+        0 100%,
+        8% 85%,
+        6% 70%,
+        10% 49%
+      );
+      @include breakpt(phone) {
+        padding: 30px;
+        clip-path: none;
+      }
+    }
+    &__legal {
+      grid-area: legal;
+      background-color: rgba(#fff, 0.5);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      clip-path: polygon(
+        0% 15%,
+        0 0,
+        15% 0%,
+        98% 0,
+        80% 15%,
+        95% 18%,
+        99% 36%,
+        89% 53%,
+        100% 71%,
+        90% 85%,
+        100% 100%,
+        0 100%
+      );
+      .pf_links {
+        span {
+          padding: 0 7px;
+          border-right: 3px solid $primary-orange;
+          &:nth-child(3) {
+            border-right: none;
+          }
+          @include breakpt(phone) {
+            font-size: 12px;
+          }
+        }
+      }
+      @include breakpt(laptop) {
+        clip-path: polygon(
+          3% 32%,
+          6% 15%,
+          0 0,
+          99% 0,
+          100% 100%,
+          0 100%,
+          8% 85%,
+          6% 70%,
+          10% 49%
+        );
+      }
+      @include breakpt(tablet) {
+        padding: 30px;
+        clip-path: polygon(
+          3% 32%,
+          6% 15%,
+          0 0,
+          99% 0,
+          100% 100%,
+          0 100%,
+          8% 85%,
+          6% 70%,
+          10% 49%
+        );
+      }
+      @include breakpt(phone) {
+        padding: 30px;
+        clip-path: none;
+      }
+    }
+  }
+}
+.ft-lwr {
+  text-align: center;
+  margin-bottom: 0;
+  padding: 3px 3px;
+  background-color: $primary-orange1;
+  color: #fff;
+  &:hover a {
+    color: #ccc;
+  }
+}
+.page-scroller {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 999;
+  background-color: rgba($primary-orange, 0.555);
+  a {
+    font-size: 20px;
+    padding: 7px;
+    color: #fff;
+    &:hover {
+      background-color: $primary-orange;
+    }
+  }
+}

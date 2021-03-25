@@ -1,0 +1,41 @@
+{% extends 'blog/blogbase.html' %}
+{% load static %}
+
+
+{% block metaData %}
+<meta property="og:url" content="http://www.technick.frontroot.co/" />
+<meta property="og:type" content="article" />
+<meta property="og:title"
+  content="Blog and articles for students and professional enthusiasm in the field of technology" />
+<meta property="og:description"
+  content="Blog and articles of tech robotic hardware travel food IoT etc. for students and professional enthusiasm in the field of technology" />
+<meta property="og:image" content="{% static 'blog/images/banner.jpg' %}" />
+
+{%endblock %}
+
+
+{% block tabName %} Home {% endblock %}
+
+
+
+{% block maincon %}
+
+{% include 'blog/mainSec.html' %}
+
+
+
+{% endblock %}
+
+
+
+{% block sidebar %}
+
+{% include 'blog/sideSec.html' %}
+
+{% endblock %}
+
+
+
+{% block javaScriptCode %}
+
+{% endblock %}

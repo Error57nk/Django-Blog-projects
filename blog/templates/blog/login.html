@@ -1,0 +1,31 @@
+{% extends 'blog/blogbase.html' %} {% load static %}
+{% block tabName %} Login {% endblock %}
+
+
+{% block maincon %}
+<div class="userLogin">
+  <div class="userLogin-box">
+    <h4 class="nmb-15">Login</h4>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        {{form.username.errors}}
+        {{form.username.label}}
+        {{form.username}}
+      </div>
+      <div class="form-group">
+        {{form.password.errors}}
+        {{form.password.label}}
+        {{form.password}}
+      </div>
+      <div class="">
+        <button type="submit" class="nbtn-small">Login</button>
+        <br>
+        <p class="nfont-12 nmt-10">Forgotten password?, <a href="{% url 'register' %}">Create New Account</a></p>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,104 @@
+#bconid {
+  height: 90vh;
+}
+.addSectionBox {
+  position: absolute;
+  top: 28px;
+  right: 7px;
+  &:hover &__list {
+    display: block;
+  }
+  &__btn {
+    padding: 4px 8px;
+    background-color: $primary-orange1;
+    border-radius: 4px;
+    font-size: 15px;
+    color: white;
+  }
+  &__list {
+    padding-left: 0;
+    margin-top: 5px;
+    background-color: $primary-orange;
+    display: none;
+    transition: ease-in 0.3s;
+    li {
+      padding: 3px 7px;
+      margin-bottom: 2px;
+      font-size: 13px;
+      background-color: aliceblue;
+      cursor: pointer;
+      &:hover {
+        background-color: aquamarine;
+      }
+    }
+  }
+}
+.n-boder-b {
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(223, 122, 7, 0.356);
+}
+.cropper-sec {
+  position: sticky;
+  top: 0;
+  left: 0;
+  max-height: 400px;
+  max-width: 400px;
+  margin: auto;
+  z-index: 9999;
+  background-color: rgba(204, 204, 204, 0.349);
+  padding: 20px;
+  border: 5px solid $primary-orange1;
+
+  .cropper-btn {
+    position: absolute;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 9999;
+  }
+}
+.hide-croper {
+  display: none;
+}
+.userLogin {
+  max-width: 300px;
+  margin: 70px auto;
+  background: $grad-1;
+  padding: 10px;
+  &-box {
+    background-color: antiquewhite;
+    padding: 30px 20px;
+  }
+}
+.userReg {
+  max-width: 80%;
+  margin: 40px auto;
+  background: $grad-1;
+}
+.errorlist {
+  li {
+    color: red;
+    font-size: 12px;
+  }
+}
+.messages {
+  padding-left: 0 !important;
+  li {
+    &.success {
+      padding: 3px 20px;
+      background-color: rgba(0, 171, 0, 0.5);
+    }
+    &.error {
+      padding: 3px 20px;
+      background-color: rgba(171, 0, 0, 0.5);
+    }
+    &.warning {
+      padding: 3px 20px;
+      background-color: rgb(254, 233, 29);
+    }
+    &.info {
+      padding: 3px 20px;
+      background-color: rgba(29, 202, 233, 0.5);
+    }
+  }
+}

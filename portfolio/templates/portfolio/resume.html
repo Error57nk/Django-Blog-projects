@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume || Nitesh</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'portfolio/css/fontawesome.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'portfolio/css/main.css' %}" />
+  </head>
+
+  <body>
+    <div class="res-home-icon">
+      <a href="./index.php"><i class="fas fa-home"></i></a>
+    </div>
+    <div class="r-banner">
+      <div class="r-banner__upper">
+        <div class="r-banner__upper__pic">
+          <img
+            class="img-fluid"
+            src="{{bio.profileImgURL}}"
+            alt="Nitesh Kumar"
+          />
+        </div>
+        <div class="r-banner__upper__lead">
+          <h2>{{bio.name}}</h2>
+          <p>{{bio.biobanner|safe}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="r-banner__lower">
+      <div class="r-banner__lower__sec">
+        <ul>
+          <li><i class="fas fa-map-pin"></i>&nbsp; {{bio.address}}</li>
+          <li><i class="fas fa-envelope"></i> {{bio.email1}}</li>
+          <li><i class="{{slink.githubIcon}}"></i> {{slink.github}}</li>
+        </ul>
+      </div>
+      <div class="r-banner__lower__sec">
+        <ul>
+          <li>
+            <i class="fas fa-mobile-alt"></i> +91 {{bio.phone1}} / +91
+            {{bio.phone2}}
+          </li>
+          <li><i class="fas fa-globe"></i> www.frontroot.co</li>
+          <li><i class="{{slink.linkedinIcon}}"></i> {{slink.linkedin}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="res-info">
+      <div class="res-info__sec-resume">
+        <div class="Training">
+          <h3>Training / Intership</h3>
+
+          <ul>
+            <li>
+              <div class="section-item">
+                <h4 class="res-subhead-v1">Software Devlopment</h4>
+                <h5>Udemy</h5>
+                <div class="nflex-between">
+                  <p>10/11/2020</p>
+                  <p>Hydrabad</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="section-item">
+                <h4 class="res-subhead-v1">Webdevlopment Devlopment</h4>
+                <h5>Udemy</h5>
+                <div class="nflex-between">
+                  <p>10/11/2020</p>
+                  <p>Hydrabad</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="section-item">
+                <h4 class="res-subhead-v1">Embedded System & Iot</h4>
+                <h5>Udemy</h5>
+                <div class="nflex-between">
+                  <p>10/11/2020</p>
+                  <p>Hydrabad</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="Education">
+          <h3>Education</h3>
+
+          <ul>
+            {%for ed in edu %}
+            <li>
+              <div class="section-item">
+                <h4 class="res-subhead-v1">
+                  {{ed.degree}} {%if ed.branch != None%}({{ed.branch}})
+                  {%endif%}
+                </h4>
+                <h5>
+                  {{ed.instituteName}}{%if ed.place != None%}, {{ed.place}}
+                  {%endif%}
+                </h5>
+
+                <div class="nflex-between">
+                  <p>{{ed.year}}</p>
+                  {%if ed.place != None%}
+                  <p>{{ed.place}}</p>
+                  {%endif%}
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="Certificates">
+          <h3>Certificates</h3>
+
+          <ul class="n-ul-2">
+            {%for c in certi %}
+            <li>
+              <div class="section-item">
+                <h4>{{c.0}}</h4>
+                <p class="psub">{{c.1}}</p>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+          <a href="{% url 'about' %}" class="btn-link nmb-10"
+            >View More Certificates &rarr;</a
+          >
+        </div>
+      </div>
+      <!-- section right -->
+      <div class="res-info__sec-resume">
+        <div class="Skill">
+          <h3>Skill</h3>
+
+          <div class="skill">
+            {%for sk in skill %}
+            <div class="skill__item">
+              <p><i class="{{sk.logo_class}}"></i> {{sk.tittle}}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="personal-projects">
+          <h3>Personal Projects</h3>
+
+          <ul>
+            {% for p in pro %}
+            <li>
+              <div class="section-item">
+                <h5>{{p.0}}</h5>
+                <p class="psub">{{p.1}}</p>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+          <a href="{% url 'projects' %}" class="btn-link nmb-10"
+            >View More Projects &rarr;</a
+          >
+        </div>
+        <div class="Languages">
+          <h3>Languages</h3>
+
+          <ul class="n-ul-2">
+            {% for la in lang %}
+            <li>
+              <div class="section-item">
+                <h4>{{la.title}}</h4>
+                <p class="psub">{{la.des}}</p>
+              </div>
+            </li>
+            {% endfor %}
+            <li>&nbsp;</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    {% include 'portfolio/footer.html' %}
+  </body>
+</html>

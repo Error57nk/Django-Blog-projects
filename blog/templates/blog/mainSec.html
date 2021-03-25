@@ -1,0 +1,185 @@
+{% load static %} {% if fp and post.number == 1 %}
+<div class="feature-box nmt-30">
+  <h2>Feature Blog</h2>
+  <div class="bbf">
+    {% for fe in fp %}
+    <div class="bbf__obj" id="bf-active">
+      <a href="{% url 'post' fe.slug %}" class="nf-center"><img src="/media/{{fe.thumb}}" class="img-fluid"
+          alt="{{fe.title}}" /></a>
+      <p class="bbf__obj__bx2_info">
+        <a href="{% url 'result' %}?cat={{fe.cat}}" class="cat_link"><i class="fas fa-puzzle-piece"></i> {{fe.cat}}
+        </a>
+        - <span><i class="far fa-clock"></i> {{fe.date}} </span>
+      </p>
+      <div class="bbf__obj__bx2">
+        <a href="{% url 'post' fe.slug %}">
+          <h4 class="bbf__obj__bx2_head">{{fe.title}}</h4>
+          <p class="bbf__obj__bx2_lead">{{fe.desc|truncatechars:130}}</p>
+        </a>
+      </div>
+      <div class="nbadge-1"><i class="fas fa-mouse"></i> {{fe.view}}</div>
+    </div>
+    {% endfor %} {% comment %}
+    <div class="bbf__obj">
+      <a href=""><img src="./images/p580X300.jpg" class="img-fluid" alt="" /></a>
+      <p class="bbf__obj__bx2_info">
+        <a href="" class="cat_link"><i class="fas fa-puzzle-piece"></i> Robotic
+        </a>
+        - <span><i class="far fa-clock"></i> 15 Nov 2021 </span>
+      </p>
+      <div class="bbf__obj__bx2">
+        <a href="">
+          <h4 class="bbf__obj__bx2_head">How to make a Basic Robot</h4>
+          <p class="bbf__obj__bx2_lead">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Exercitationem cum dolore autem consequuntur soluta facilis illum
+            quos ducimus numquam harum!
+          </p>
+        </a>
+      </div>
+      <div class="nbadge-1"><i class="fas fa-mouse"></i> 12k</div>
+    </div>
+    <div class="bbf__obj">
+      <a href=""><img src="./images/p580X300.jpg" class="img-fluid" alt="" /></a>
+      <p class="bbf__obj__bx2_info">
+        <a href="" class="cat_link"><i class="fas fa-puzzle-piece"></i> Robotic
+        </a>
+        - <span><i class="far fa-clock"></i> 15 Nov 2021 </span>
+      </p>
+      <div class="bbf__obj__bx2">
+        <a href="">
+          <h4 class="bbf__obj__bx2_head">How to make a Basic Robot</h4>
+          <p class="bbf__obj__bx2_lead">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Exercitationem cum dolore autem consequuntur soluta facilis illum
+            quos ducimus numquam harum!
+          </p>
+        </a>
+      </div>
+      <div class="nbadge-1"><i class="fas fa-mouse"></i> 12k</div>
+    </div>
+    {% endcomment %}
+  </div>
+</div>
+{% else %}
+<div class="nmt-30"></div>
+{% endif %}
+
+<div class="nmp-box">
+  <h2>Recent Blog</h2>
+  <div class="nrc-box">
+    {% for blog in post %}
+    <!-- <h2>HERE:-- {{blog.user.bio}}</h2> -->
+    <div class="nrc-items">
+      <a href="{% url 'post' blog.slug %}" class="nrc-items__img nf-center"><img src="media/{{blog.thumb}}"
+          class="img-fluid" alt="nitesh" /></a>
+      <div class="nbadge-2"><i class="fas fa-mouse"></i> {{blog.view}}</div>
+      <div class="nrc-items__info">
+        <a href="{% url 'result'%}?cat={{blog.cat}}" class="nnowrap"><i class="fas fa-puzzle-piece"></i> {{blog.cat}}
+        </a>
+        &nbsp;|&nbsp;
+        <a href="{% url 'author' blog.user %}" class="nnowrap"><i class="far fa-user"></i> {{blog.user}}</a>
+        &nbsp;|&nbsp;
+        <span class="nnowrap"><i class="far fa-clock"></i> {{blog.date}}</span>
+      </div>
+      <div class="nrc-items__des">
+        <a href="{% url 'post' blog.slug %}" class="nrc-items__des_head">
+          <h4>{{blog.title}}</h4>
+          <p class="nrc-items__des_lead">{{blog.desc|truncatechars:130}}</p>
+        </a>
+
+        <div class="nrc-items__des_tag">
+          {% for tag in blog.tagList %}
+          <span>{{tag}}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+    <!-- <div class="nrc-items">
+      <a href="" class="nrc-items__img"><img src="./images/p580X300.jpg" class="img-fluid" alt="nitesh"></a>
+      <div class="nbadge-2"><i class="fas fa-mouse"></i> 12k</div>
+      <div class="nrc-items__info">
+        <a href="" class="nnowrap"><i class="fas fa-puzzle-piece"></i> Robotic </a> &nbsp;|&nbsp;
+        <a href="" class="nnowrap"><i class="far fa-user"></i> Nitesh Kumar</a> &nbsp;|&nbsp;
+        <span class="nnowrap"><i class="far fa-clock"></i> 15 Nov 2021</span>
+      </div>
+      <div class="nrc-items__des">
+        <a href="" class="nrc-items__des_head">
+          <h4>Lorem ipsum dolor sit amet consectetur.</h4>
+          <p class="nrc-items__des_lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem suscipit
+            reprehenderit nemo mollitia,
+            placeat, non qui provident praesentium quibusdam, ex quam inventore illo omnis odio ea similique iusto
+            laudantium hic!</p>
+        </a>
+
+        <div class="nrc-items__des_tag">
+          <span>etc</span>
+          <span>jet King</span>
+          <span>Royel Field</span>
+        </div>
+      </div>
+    </div>
+    <div class="nrc-items">
+      <a href="" class="nrc-items__img"><img src="./images/p580X300.jpg" class="img-fluid" alt="nitesh"></a>
+      <div class="nbadge-2"><i class="fas fa-mouse"></i> 12k</div>
+      <div class="nrc-items__info">
+        <a href="" class="nnowrap"><i class="fas fa-puzzle-piece"></i> Robotic </a> &nbsp;|&nbsp;
+        <a href="" class="nnowrap"><i class="far fa-user"></i> Nitesh Kumar</a> &nbsp;|&nbsp;
+        <span class="nnowrap"><i class="far fa-clock"></i> 15 Nov 2021</span>
+      </div>
+      <div class="nrc-items__des">
+        <a href="" class="nrc-items__des_head">
+          <h4>Lorem ipsum dolor sit amet consectetur.</h4>
+          <p class="nrc-items__des_lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem suscipit
+            reprehenderit nemo mollitia,
+            placeat, non qui provident praesentium quibusdam, ex quam inventore illo omnis odio ea similique iusto
+            laudantium hic!</p>
+        </a>
+
+        <div class="nrc-items__des_tag">
+          <span>etc</span>
+          <span>jet King</span>
+          <span>Royel Field</span>
+        </div>
+      </div>
+    </div>
+    <div class="nrc-items">
+      <a href="" class="nrc-items__img"><img src="./images/p580X300.jpg" class="img-fluid" alt="nitesh"></a>
+      <div class="nbadge-2"><i class="fas fa-mouse"></i> 12k</div>
+      <div class="nrc-items__info">
+        <a href="" class="nnowrap"><i class="fas fa-puzzle-piece"></i> Robotic </a> &nbsp;|&nbsp;
+        <a href="" class="nnowrap"><i class="far fa-user"></i> Nitesh Kumar</a> &nbsp;|&nbsp;
+        <span class="nnowrap"><i class="far fa-clock"></i> 15 Nov 2021</span>
+      </div>
+      <div class="nrc-items__des">
+        <a href="" class="nrc-items__des_head">
+          <h4>Lorem ipsum dolor sit amet consectetur.</h4>
+          <p class="nrc-items__des_lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem suscipit
+            reprehenderit nemo mollitia,
+            placeat, non qui provident praesentium quibusdam, ex quam inventore illo omnis odio ea similique iusto
+            laudantium hic!</p>
+        </a>
+
+        <div class="nrc-items__des_tag">
+          <span>etc</span>
+          <span>jet King</span>
+          <span>Royel Field</span>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>
+
+<div class="paginator nmt-40 npt-10">
+  <p>
+    {% if post.has_previous %}
+    <a href="?page={{post.previous_page_number}}" class="nbtn-small nmr-10">Prev</a>
+    {% endif %}
+    <span>Showing page {{post.number}}</span>
+    {% if post.has_next %}
+    <a href="?page={{post.next_page_number}}" class="nbtn-small nml-10">Next</a>
+    {% endif %}
+  </p>
+</div>
